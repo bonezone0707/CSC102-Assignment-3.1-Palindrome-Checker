@@ -1,0 +1,82 @@
+<!--
+Author: Steven DeBuono
+Description: Palindrome Checker 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palindrome Checker</title>
+  <!-- Add some styles for a nice look and feel -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0e0eef;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      margin: 50px auto;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      color: #f20e0e;
+    }
+    form {
+      margin-top: 20px;
+    }
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Title of the page -->
+    <h1>Palindrome Checker</h1>
+    <p>Enter a word or phrase to see if it's a palindrome!</p>
+
+    <!-- Form for user input -->
+    <form id="palindromeForm">
+      <!-- Text input for the user -->
+      <input type="text" id="userInput" placeholder="Enter your word or phrase" required>
+      <!-- Submit button -->
+      <button type="submit">Check</button>
+    </form>
+
+    <!-- Area to display results -->
+    <div class="result" id="resultMessage"></div>
+  </div>
+
+  <!-- Reference the external JavaScript file -->
+  <script src="strings2.js"></script>
+</body>
+</html>
