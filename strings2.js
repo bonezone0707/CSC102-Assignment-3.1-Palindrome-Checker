@@ -1,27 +1,58 @@
-// Select the form and result message elements
-const form = document.getElementById('palindromeForm');
-const resultMessage = document.getElementById('resultMessage');
+// Function to check if input is a palindrome
+function checkPalindrome() {
+  const userInput = document.getElementById('userInput').value.trim();
+  const resultMessage = document.getElementById('resultMessage');
 
-// Add an event listener to handle form submission
-form.onsubmit = function (event) {
-  event.preventDefault(); // Prevent the default form submission behavior
-
-  // Get the user input
-  const userInput = document.getElementById('userInput').value;
-
-  // Clean the input: Remove non-alphanumeric characters and convert to lowercase
-  const cleanedInput = userInput.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-
-  // Reverse the cleaned input
-  const reversedInput = cleanedInput.split('').reverse().join('');
-
-  // Check if the cleaned input matches the reversed input
-  if (cleanedInput === reversedInput && cleanedInput !== "") {
-    resultMessage.innerHTML = `<span style="color: green;">Yes, "${userInput}" is a palindrome!</span>`;
-  } else {
-    resultMessage.innerHTML = `<span style="color: red;">No, "${userInput}" is not a palindrome.</span>`;
+  if (userInput === "") {
+    resultMessage.textContent = "Please enter a word or phrase.";
+    resultMessage.className = "error-message";
+    return;
   }
 
-  // Clear the input field
-  document.getElementById('userInput').value = '';
-};
+  const isPalindrome = userInput === userInput.split('').reverse().join('');
+
+  if (isPalindrome) {
+    resultMessage.textContent = `"${userInput}" is a palindrome!`;
+    resultMessage.className = "success-message";
+  } else {
+    resultMessage.textContent = `"${userInput}" is not a palindrome.`;
+    resultMessage.className = "error-message";
+  }
+
+  document.getElementById('userInput').value = "";
+}
+
+// Function to validate user input
+function validateUserInput() {
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const zipCode = document.getElementById('zipCode').value.trim();
+  const resultMessage = document.getElementById('resultMessage');
+
+  if (firstName === "" || lastName === "" || zipCode === "") {
+    resultMessage.textContent = "All fields are required.";
+    resultMessage.className = "error-message";
+    return;
+  }
+
+  const fullName = `${firstName} ${lastName}`;
+
+  if (fullName.length > 20) {
+    resultMessage.textContent = "The combined name must not exceed 20 characters.";
+    resultMessage.className = "error-message";
+    return;
+  }
+
+  if (!/^\d{5}$/.test(zipCode)) {
+    resultMessage.textContent = "The zip code must be exactly 5 digits.";
+    resultMessage.className = "error-message";
+    return;
+  }
+
+  resultMessage.textContent = 'Success! The secret message is: "Never stop learning and growing."';
+  resultMessage.className = "success-message";
+
+  document.getElementById('firstName').value = "";
+  document.getElementById('lastName').value = "";
+  document.getElementById('zipCode').value = "";
+}
